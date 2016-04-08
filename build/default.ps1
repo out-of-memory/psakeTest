@@ -46,7 +46,7 @@ Write-Host $cleanMessage
 
 task Compile -depends Init  -description "Compiling the files"{
 Write-Host $compileMessage
-	Exec {msbuild $solutionFile /p:Configuration=$buildConfiguration /p:Platform=$buildPlatform /p:OutDir=$tempDirectory}
+	Exec {msbuild $solutionFile /p:Configuration=$buildConfiguration /p:Platform=$buildPlatform /p:OutDir=$tempDirectory /p:EnableNuGetPackageRestore=True}
 }
 
 task Test -depends Compile, Clean  -description "Testing the files"{
